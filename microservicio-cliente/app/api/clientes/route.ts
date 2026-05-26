@@ -4,7 +4,7 @@ import { Pool } from 'pg';
 const pool = new Pool({
     user: 'postgres',
     password: 'Factura2026',
-    host: '54.90.68.218',
+    host: '54.90.68.218', // Cambia esto por la IP o dominio de tu base de datos
     port: 5432,
     database: 'facturacion_db',
 });

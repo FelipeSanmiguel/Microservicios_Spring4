@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 const pool = new Pool({
     user: 'postgres',
     password: 'Factura2026',
-    host: '54.90.68.218',
+    host: '54.90.68.218', // Cambia esto por la IP o dominio de tu base de datos
     port: 5432,
     database: 'facturacion_db',
     // Forzamos a que si la BD tarda más de 300ms en contestar, cancele y cuente como Timeout

@@ -1,4 +1,4 @@
-const urlDestino = 'http://localhost:3000/api/heartbeat';
+const urlDestino = 'http://localhost:3000/api/heartbeat'; // cambiar localhost por la IP o dominio del microservicio cliente
 const intervalo = 100; 
 
 let fallosConsecutivos = 0; // Variable para rastrear el Umbral de Alerta
