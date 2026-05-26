@@ -73,22 +73,22 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 #TODO_: Cambiar a PostgreSQL para producción, pero por ahora usamos SQLite para desarrollo localZ
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'facturacion_db',
-#        'USER': 'postgres',       # TODO: cambiar por el usuario real
-#        'PASSWORD': 'password',   # TODO: cambiar por la contraseña real
-#        'HOST': 'localhost',
-#       'PORT': '5432',
-#    }
-#}
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'facturacion_db',
+        'USER': 'postgres',
+        'PASSWORD': 'Factura2026',
+        'HOST': 'LA_IP_PUBLICA_DE_ESTA_EC2', # Ej: 54.210.23.45
+        'PORT': '5432',
     }
 }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
