@@ -19,4 +19,9 @@ pip install psycopg2-binary requests
 - toca cambiar el views.py y podner la ip publica de proyectops
 - -toca cambiar settings.py para po0ner DATABASE como postgress y con la clave y contraseña que pongamos en la BD de AWS
 
+- SE CLONA EL REPO
+- .\venv\Scripts\Activate.ps1
+- Y se corre dentro del ambiente virtual
+- python manage.py runserver 
+
 
