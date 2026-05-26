@@ -77,9 +77,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'facturacion_db',
+        
         'USER': 'postgres',
         'PASSWORD': 'Factura2026',
-        'HOST': 'LA_IP_PUBLICA_DE_ESTA_EC2', # Ej: 54.210.23.45
+        'HOST': '54.90.68.218', 
         'PORT': '5432',
     }
 }
