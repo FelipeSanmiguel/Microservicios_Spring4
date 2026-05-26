@@ -31,6 +31,14 @@ Se hacen las migraciones
 python manage.py makemigrations
 python manage.py migrate
 
+# MONITORING 
+- sudo apt update
+- cloan el repo
+- van a microservicio-cliente
+-  sudo apt install nodejs
+-  sudo nano  monitoring.js  ( para cambiar la ip publica del micro de clientes)
+  const urlDestino = 'http://localhost:3000/api/heartbeat'; // cambiar localhost por la IP o dominio del microservicio cliente
+- node monitoring.js 
 
 - Y se corre dentro del ambiente virtual
 - python manage.py runserver 0.0.0.0:8000
