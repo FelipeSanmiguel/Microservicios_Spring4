@@ -5,7 +5,7 @@ sudo apt update
 # Microservicio CLiente 
 sudo apt update 
 clonar el repo e ir a la carpeta de microoservicio-cliente 
-ahi se debe poner npm install 
+ahi se debe poner sudo npm install 
 y luego para correr usan 
 npm run dev
 en el navegador se entra con : 
@@ -36,6 +36,7 @@ python manage.py migrate
 - cloan el repo
 - van a microservicio-cliente
 -  sudo apt install nodejs
+-  sudo npm install 
 -  npm install @aws-sdk/client-sns
 -  sudo nano  monitoring.js  ( para cambiar la ip publica del micro de clientes)
   const urlDestino = 'http://localhost:3000/api/heartbeat'; // cambiar localhost por la IP o dominio del microservicio cliente
