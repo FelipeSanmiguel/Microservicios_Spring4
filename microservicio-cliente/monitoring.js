@@ -50,6 +50,17 @@ setInterval(async () => {
         // Lógica del Umbral de Alerta
         if (estado === 'DENEGADO') {
             fallosConsecutivos++;
+        const datos = await respuesta.json();
+        
+        const estado = datos.estado || 'DENEGADO';
+        const latencia = datos.latencia_ms || '+300';
+        const timestamp = datos.timestamp || Date.now();
+        
+        console.log(`[${estado}] Latencia: ${latencia}ms - Timestamp: ${timestamp}`);
+
+        // Lógica del Umbral de Alerta
+        if (estado === 'DENEGADO') {
+            fallosConsecutivos++;
         } else {
             // El servicio responde correctamente, reiniciamos contadores
             fallosConsecutivos = 0; 
