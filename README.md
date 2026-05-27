@@ -36,6 +36,7 @@ python manage.py migrate
 - cloan el repo
 - van a microservicio-cliente
 -  sudo apt install nodejs
+-  npm install @aws-sdk/client-sns
 -  sudo nano  monitoring.js  ( para cambiar la ip publica del micro de clientes)
   const urlDestino = 'http://localhost:3000/api/heartbeat'; // cambiar localhost por la IP o dominio del microservicio cliente
 - node monitoring.js 
