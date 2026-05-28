@@ -125,6 +125,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configuración de MongoDB para el microservicio de reportes
 
-MONGO_URI = "mongodb://localhost:27017"
-MONGO_DB_NAME = "reportes_db"
-MONGO_COLLECTION_REPORTES = "reportes"
+# CQRS - Base de datos de escritura / commands
+MONGO_COMMAND_URI = "mongodb://<IP_Privada_Escritura>:27017"
+MONGO_COMMAND_DB_NAME = "reportes_command_db"
+MONGO_COMMAND_COLLECTION_REPORTES = "reportes"
+
+# CQRS - Base de datos de lectura / queries
+MONGO_QUERY_URI = "mongodb://<IP_Privada_Lectura>:27017"
+MONGO_QUERY_DB_NAME = "reportes_query_db"
+MONGO_QUERY_COLLECTION_REPORTES = "reportes"

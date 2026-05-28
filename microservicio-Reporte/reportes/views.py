@@ -3,8 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from pymongo.errors import DuplicateKeyError, PyMongoError
 
-from .mongo_client import reportes_collection
-
+from .mongo_client import command_reportes_collection, query_reportes_collection
 
 CAMPOS_OBLIGATORIOS = [
     "reporte_id",
@@ -31,7 +30,7 @@ def validar_campos_obligatorios(data):
 def listar_reportes(request):
     try:
         reportes = list(
-            reportes_collection.find({}, {"_id": 0})
+            query_reportes_collection.find({}, {"_id": 0})
         )
 
         return Response(reportes, status=status.HTTP_200_OK)
@@ -49,7 +48,7 @@ def listar_reportes(request):
 @api_view(["GET"])
 def obtener_reporte(request, reporte_id):
     try:
-        reporte = reportes_collection.find_one(
+        reporte = command_reportes_collection.find_one(
             {"reporte_id": reporte_id},
             {"_id": 0}
         )
@@ -98,7 +97,7 @@ def crear_reporte(request):
             "ahorro": data["ahorro"],
         }
 
-        reportes_collection.insert_one(nuevo_reporte)
+        command_reportes_collection.insert_one(nuevo_reporte)
 
         respuesta = {
             "reporte_id": nuevo_reporte["reporte_id"],
@@ -139,7 +138,7 @@ def actualizar_reporte(request, reporte_id):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        resultado = reportes_collection.update_one(
+        resultado = command_reportes_collection.update_one(
             {"reporte_id": reporte_id},
             {"$set": data}
         )
@@ -150,7 +149,7 @@ def actualizar_reporte(request, reporte_id):
                 status=status.HTTP_404_NOT_FOUND
             )
 
-        reporte_actualizado = reportes_collection.find_one(
+        reporte_actualizado = command_reportes_collection.find_one(
             {"reporte_id": reporte_id},
             {"_id": 0}
         )
@@ -170,7 +169,7 @@ def actualizar_reporte(request, reporte_id):
 @api_view(["DELETE"])
 def eliminar_reporte(request, reporte_id):
     try:
-        resultado = reportes_collection.delete_one(
+        resultado = command_reportes_collection.delete_one(
             {"reporte_id": reporte_id}
         )
 
