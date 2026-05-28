@@ -45,4 +45,20 @@ python manage.py migrate
 - Y se corre dentro del ambiente virtual
 - python manage.py runserver 0.0.0.0:8000
 
-
+# Reportes
+- sudo apt update
+- sudo apt install -y git python3 python3-pip python3-venv
+- git clone https://github.com/Lauraaavelin/Microservicios_Spring4.git
+- cd Microservicios_Spring4/microservicio-Reporte
+- python3 -m venv venv
+- source venv/bin/activate
+- pip install django djangorestframework pymongo
+- pip freeze > requirements.txt
+Configurar Conexion BD (MongoDB)
+- nano core/settings.py
+- MONGO_URI = "mongodb://<IP_PRIVADA_MONGO>:27017/"
+Esto dos ya deberian estar pero en caso de no estar cambiarlo
+- ALLOWED_HOSTS = ["*"]
+- INSTALLED_APPS = [...,"rest_framework","reportes",...]
+- python manage.py runserver 0.0.0.0:8080
+- http://<IP_PUBLICA_EC2>:8080/api/reportes/
