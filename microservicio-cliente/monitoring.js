@@ -1,4 +1,4 @@
-const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns");
+//const { SNSClient, PublishCommand } = require("@aws-sdk/client-sns");
 
 // 1. Configuración de AWS SNS (¡Totalmente limpio, sin credenciales!)
 // El SDK tomará los permisos de la EC2 (LabRole) o de tu PC automáticamente.
@@ -50,17 +50,6 @@ setInterval(async () => {
         // Lógica del Umbral de Alerta
         if (estado === 'DENEGADO') {
             fallosConsecutivos++;
-        const datos = await respuesta.json();
-        
-        const estado = datos.estado || 'DENEGADO';
-        const latencia = datos.latencia_ms || '+300';
-        const timestamp = datos.timestamp || Date.now();
-        
-        console.log(`[${estado}] Latencia: ${latencia}ms - Timestamp: ${timestamp}`);
-
-        // Lógica del Umbral de Alerta
-        if (estado === 'DENEGADO') {
-            fallosConsecutivos++;
         } else {
             // El servicio responde correctamente, reiniciamos contadores
             fallosConsecutivos = 0; 
@@ -79,13 +68,13 @@ setInterval(async () => {
 
     } catch (error) {
         // Esto se ejecuta si la instancia está completamente apagada o bloqueada
-        console.log(`[DENEGADO] No se pudo conectar al microservicio (Servidor apagado o Timeout)`);
+        console.log(`[DENEGADO] No se pudo conectar al microservicio (Servidor apagado o bloqueado) - Error: ${error.message}`);
         fallosConsecutivos++;
-        
+
         if (fallosConsecutivos >= 2 && !alertaEnviada) {
             console.log('\n🚨 UMBRAL DE ALERTA ALCANZADO: 2 fallos consecutivos en estado DENEGADO 🚨\n');
-            alertaEnviada = true;
-            await enviarAlertaSNS();
+            alertaEnviada = true; // Bloqueamos la variable para no mandar más correos por esta misma caída
+            await enviarAlertaSNS(); // Disparamos el correo
         }
     }
 }, intervalo);
